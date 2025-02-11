@@ -23,6 +23,10 @@ app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
 
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+
 connectDB() //To ensure data is stored in the database, the database connection from database.js must be established before starting the server.
   .then(() => {
     console.log("Databse connection establised...");
