@@ -24,7 +24,7 @@ While routing if teh url is abc and if there is a ab?c that means c is optional 
 
 ab(cd)?e -> Here cd is optional
 
-- -> abbbbbbc (ab+c)
+- -> abbbbbbc (ab+c))
 
 * -> star (ab\*c)Starts with ab and end with c
 
