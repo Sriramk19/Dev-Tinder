@@ -51,13 +51,16 @@ authRouter.post("/login", async (req, res) => {
     if (isPasswordValid) {
       const token = await user.getJWT(); //Create the JWT token getting it from usermodel
 
-      //Add the token to cookie and send the response to the user
+      // Add the token to a cookie with proper settings
       res.cookie("token", token, {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        httpOnly: true, // Prevent access from frontend JavaScript
+        secure: true, // Only send over HTTPS (important for production)
+        sameSite: "None", // Allow cross-origin cookies
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
       });
       //
 
-      res.send(user);
+      res.snd(useer);
     } else {
       throw new Error("Incorrect Password");
     }
